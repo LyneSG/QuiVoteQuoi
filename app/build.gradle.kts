@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
-    kotlin("plugin.serialization") version "2.2.10"
+    alias(libs.plugins.kotlin.serialization)
+
 }
 
 android {
@@ -49,6 +50,9 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+    implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
