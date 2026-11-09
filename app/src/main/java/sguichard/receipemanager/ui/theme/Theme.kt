@@ -10,6 +10,12 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import sguichard.receipemanager.ui.theme.ColorTheme.Pink40
+import sguichard.receipemanager.ui.theme.ColorTheme.Pink80
+import sguichard.receipemanager.ui.theme.ColorTheme.Purple40
+import sguichard.receipemanager.ui.theme.ColorTheme.Purple80
+import sguichard.receipemanager.ui.theme.ColorTheme.PurpleGrey40
+import sguichard.receipemanager.ui.theme.ColorTheme.PurpleGrey80
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,

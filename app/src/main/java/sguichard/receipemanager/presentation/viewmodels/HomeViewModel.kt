@@ -12,31 +12,38 @@ import sguichard.receipemanager.repositories.GroupesPolitiquesRepository
 
 data class HomeUIState(
     val groupesPolitiques: List<GroupePolitique>,
-    val groupePolitique: GroupePolitique?
+    val groupePolitique: GroupePolitique?,
+    val isLoading: Boolean
 )
 
 class HomeViewModel: ViewModel() {
 
     private val groupePolitiqueRepositories = GroupesPolitiquesRepository
 
-    private val _uiState :MutableStateFlow<HomeUIState> = MutableStateFlow(HomeUIState(listOf(), null))
+    private val _uiState :MutableStateFlow<HomeUIState> = MutableStateFlow(HomeUIState(listOf(), null, true))
     val uiState: StateFlow<HomeUIState> = _uiState.asStateFlow()
 
     fun fetchGroupesPolitiques() {
         viewModelScope.launch {
+            _uiState.update { currentState ->
+                currentState.copy(isLoading = true)
+            }
             val groupesPolitiquesTmp = groupePolitiqueRepositories.getGroupesPolitiques()
 
             _uiState.update { currentState ->
-                currentState.copy(groupesPolitiques = groupesPolitiquesTmp)
+                currentState.copy(groupesPolitiques = groupesPolitiquesTmp, isLoading = false)
             }
         }
     }
 
     fun fetchGroupePolitiqueByAbbr(abbr : String) {
         viewModelScope.launch {
+            _uiState.update { currentState ->
+                currentState.copy(isLoading = true)
+            }
             val groupePolitiqueTmp = groupePolitiqueRepositories.getGroupePolitiqueDetail(abbr)
             _uiState.update { currentState ->
-                currentState.copy(groupesPolitiques = listOf(), groupePolitique = groupePolitiqueTmp)
+                currentState.copy(groupesPolitiques = listOf(), groupePolitique = groupePolitiqueTmp, isLoading = false)
             }
         }
     }

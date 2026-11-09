@@ -4,8 +4,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import sguichard.receipemanager.data.DataGroup
 import sguichard.receipemanager.data.DataGroups
-import sguichard.receipemanager.data.GroupePolitique
-import sguichard.receipemanager.data.GroupesPolitiques
 
 interface GroupesPolitiqueService {
 

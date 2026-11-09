@@ -4,13 +4,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DataGroups(@SerialName("data") val data : GroupesPolitiques)
+data class DataGroups(@SerialName("data") val data : GroupesPolitiquesData)
 
 @Serializable
 data class DataGroup(@SerialName("data") val data : GroupePolitiqueData)
 
 @Serializable
-data class GroupesPolitiques(@SerialName("groups") val groupesPolitiquesList : List<GroupePolitique>)
+data class GroupesPolitiquesData(@SerialName("groups") val groupesPolitiquesList : List<GroupePolitique>)
 
 @Serializable
 data class GroupePolitiqueData(@SerialName("groupe") val groupePolitique : GroupePolitique)
