@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import sguichard.receipemanager.data.Depute
 import java.util.concurrent.TimeUnit
 import kotlin.jvm.java
 
@@ -38,9 +39,13 @@ object NetworkDataSource {
 
     }
 
-}
+    val deputesService: DeputesService by lazy{
+        Retrofit.Builder()
+            .client(client)
+            .baseUrl(BASE_URL)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .build()
+            .create(DeputesService::class.java)
+    }
 
-sealed class Resource<out T> {
-    data class Success<out T>(val data: T): Resource<T>()
-    data class Error(val error: String): Resource<Nothing>()
 }
